@@ -29,15 +29,28 @@ void EnterNumberInt(int& varLink, string label){
         string raw_input;
         cout << label << " = ";
         getline(cin,raw_input);
-        while (!UserInputInt(raw_input))
-        {
+        while (!UserInputInt(raw_input)){
             cout << label << " = ";
             getline(cin,raw_input);
         }
         varLink = stoi(raw_input);
     
 }
-int task_0(int NumberA, int NumberB){
-    return NumberA * NumberB;
+
+bool task_2(int number) {
+    if(number < 10) return true;
+    int lastDigit = number % 10;
+    int firstDigit = number;
+    
+    while(firstDigit >= 10) {
+        firstDigit /= 10;
+    }
+    return firstDigit == lastDigit;
 }
+
+bool task_3(int number) {
+    int lastDigit = number % 10;
+    return lastDigit % 2 != 0;
+}
+
 #endif

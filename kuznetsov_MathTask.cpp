@@ -1,12 +1,17 @@
 #include <iostream>
-#include "M:\\Kuznetsov_IST\\kuznetsov_LR5\\kuznetsov_lR5_part1\\kuznetsov_MathTask.h"
-
+#include "M:\Kuznetsov_IST\kuznetsov_LR5\kuznetsov_lr5_part2\kuznetsov_MathTask.h"
 int main(){
-    int NumberA = 0, NumberB = 0;
-    EnterNumberInt(NumberA, "input height A");
-    EnterNumberInt(NumberB, "input height B");
-
-    int task = task_0(NumberA, NumberB);
-
-    cout << "area of rectangle is " << task << endl;
+    int number;
+    EnterNumberInt(number, "Введите натуральное число X: ");
+    
+    bool sameDigits = task_2(number);
+    bool oddEnd = task_3(number);
+    
+    
+    // Вывод результатов без переменной sameDigits
+cout << "Число " << number << ":\n";
+cout << "- Первая и последняя цифра " 
+     << (task_2(number) ? "совпадают" : "не совпадают") << endl;
+cout << "- Последняя цифра "
+     << (task_3(number) ? "нечётная" : "чётная") << endl;
 }
