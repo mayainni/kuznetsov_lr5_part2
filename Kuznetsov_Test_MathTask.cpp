@@ -2,49 +2,42 @@
 #include "CUTE/cute/ide_listener.h"
 #include "CUTE/cute/cute_runner.h"
 
-#include "M:\Kuznetsov_IST\kuznetsov_LR5\kuznetsov_lR5_part1\kuznetsov_MathTask.h"
+#include "M:\Kuznetsov_IST\kuznetsov_LR5\kuznetsov_lr5_part2\kuznetsov_MathTask.h"
 
 using namespace cute;
-
-void testCalcRectangleArea(){
-    int a= 3;
-    int b = 5;
-    int expected = 15;
-    int actual = task_0(a,b);
-    ASSERT_EQUAL(expected, actual);
-}
-void testUserInput_Empty(){
-    string str = "";
-    bool expected = false;
-    bool actual = UserInputInt(str);
-    ASSERT_EQUAL(expected,actual);
-}
-void testUserInput_Letter(){
-    string str= "a";
-    bool expected = false;
-    bool actual = UserInputInt(str);
-    ASSERT_EQUAL(expected,actual);
-}
-void testUserInput_NegativeValue(){
-    string str = "-5";
-    bool expected = false;
-    bool actual = UserInputInt(str);
-    ASSERT_EQUAL(expected,actual);
+void testTsak_1() {
+    ASSERT(task_2(7));
+    ASSERT(task_3(7));
 }
 
-void testUserInput_DigitLetterValue(){
-    string str = "5a";
-    bool expected = false;
-    bool actual = UserInputInt(str);
-    ASSERT_EQUAL(expected,actual);
+void testTask_2_11() {
+    ASSERT(task_2(1231));
+    ASSERT(task_3(1231));
 }
+
+void testTask_2_52() {
+    ASSERT(!task_2(1234));
+    ASSERT(!task_3(1234));
+}
+
+void testTask_3() {
+    ASSERT(!task_3(2468));
+}
+
+void testUserInputInt() {
+    ASSERT(UserInputInt("123"));
+    ASSERT(!UserInputInt("-5"));
+    ASSERT(!UserInputInt("12a3"));
+    ASSERT(!UserInputInt(""));
+}
+
 int main(){
     suite s;
-    s.push_back(CUTE(testCalcRectangleArea));
-    s.push_back(CUTE(testUserInput_Empty));
-    s.push_back(CUTE(testUserInput_Letter));
-    s.push_back(CUTE(testUserInput_NegativeValue));
-    s.push_back(CUTE(testUserInput_DigitLetterValue));
+    s.push_back(CUTE(testTsak_1));
+    s.push_back(CUTE(testTask_2_11));
+    s.push_back(CUTE(testTask_2_52));
+    s.push_back(CUTE(testTask_3));
+    s.push_back(CUTE(testUserInputInt));
     ide_listener<> listener;
     makeRunner(listener )(s, "test calcRectangleArea");
 
